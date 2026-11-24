@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CRM Vehículos — Inventario, leads y publicaciones</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">🚗</span>
+      <span>CRM Vehículos<small>Inventario · Leads · Publicaciones</small></span>
+    </div>
+    <div class="head-actions">
+      <span id="estadoModo" class="badge">Modo local</span>
+      <button id="btnLogin" class="btn ghost">Conectar GitHub</button>
+      <button id="btnLogout" class="btn ghost hidden">Desconectar</button>
+    </div>
+  </header>
+
+  <!-- Vista pública de solo lectura (cuando se abre ?v=id) -->
+  <main id="vistaPublica" class="public-wrap hidden"></main>
+
+  <div id="app">
+    <nav class="tabs" id="tabs">
+      <button class="tab-btn activa" data-tab="inventario">🚙 Inventario</button>
+      <button class="tab-btn" data-tab="leads">👥 CRM / Leads</button>
+      <button class="tab-btn" data-tab="publicaciones">📅 Publicaciones</button>
+      <button class="tab-btn" data-tab="config">⚙️ Configuración</button>
+    </nav>
+
+    <section class="panel activa" id="panel-inventario">
+      <div class="barra">
+        <input id="buscarVeh" type="search" placeholder="Buscar por patente, marca o modelo…">
+        <select id="filtroEstadoVeh">
+          <option value="">Todos los estados</option>
+          <option>Disponible</option>
+          <option>Reservado</option>
+          <option>Vendido</option>
+        </select>
+        <button id="btnNuevoVeh" class="btn primary">+ Nuevo vehículo</button>
+      </div>
+      <div id="listaVehiculos" class="grid"></div>
+    </section>
+
+    <section class="panel" id="panel-leads">
+      <div class="barra">
+        <input id="buscarLead" type="search" placeholder="Buscar lead…">
+        <select id="filtroEstadoLead">
+          <option value="">Todos los estados</option>
+          <option>Nuevo</option>
+          <option>Contactado</option>
+          <option>Interesado</option>
+          <option>Cita</option>
+          <option>Vendido</option>
+          <option>Descartado</option>
+        </select>
+        <button id="btnNuevoLead" class="btn primary">+ Nuevo lead</button>
+      </div>
+      <div id="listaLeads" class="grid"></div>
+    </section>
+
+    <section class="panel" id="panel-publicaciones">
+      <div class="barra">
+        <button id="btnNuevaPub" class="btn primary">+ Programar publicación</button>
+        <span class="ayuda">Las publicaciones programadas se envían solas desde GitHub Actions si configuras los secretos de Meta. También puedes publicar o compartir manualmente.</span>
+      </div>
+      <div id="listaPublicaciones" class="lista"></div>
+    </section>
+
+    <section class="panel" id="panel-config">
+      <div id="contenidoConfig" class="config-grid"></div>
+    </section>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h2 id="modalTitulo"></h2>
+        <button id="modalCerrar" class="btn ghost" aria-label="Cerrar">✕</button>
+      </div>
+      <form id="modalForm"></form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="js/github-config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/publish.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
