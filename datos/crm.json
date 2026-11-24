@@ -1,8 +1,26 @@
 {
-  "vehiculos": [],
+  "vehiculos": [
+    {
+      "id": "21ba196d-33b5-49bd-b584-0d0255e176bc",
+      "patente": "",
+      "marca": "FORD",
+      "modelo": "",
+      "version": "",
+      "anio": 0,
+      "kilometraje": 0,
+      "precio": 0,
+      "estado": "Disponible",
+      "combustible": "",
+      "transmision": "",
+      "color": "",
+      "descripcion": "",
+      "fotos": [],
+      "creado": "2026-11-24T17:54:46.759Z"
+    }
+  ],
   "publicaciones": [],
   "meta": {
-    "actualizado": null,
+    "actualizado": "2026-11-24T17:54:46.760Z",
     "version": 1
   }
 }
